@@ -26,7 +26,7 @@
                     data: $(this).serialize(),
                     success: function(data) {
                         $('#result').html(data);
-                        alert("Tu registro se ha realizado exitosamente!");
+                        alert("¡Contraseña enviada exitosamente!");
                         location.reload(true);
 
 

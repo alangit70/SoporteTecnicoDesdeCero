@@ -1,7 +1,7 @@
 <?php
 session_start(); 
-$var_inputUsuario=$_POST['usuario'];
-$var_inputCorreo=$_POST['correo'];
+$var_usuario=$_POST['usuario'];
+$var_correo=$_POST['correo'];
 
 //recontra
 	
@@ -9,7 +9,7 @@ $var_inputCorreo=$_POST['correo'];
 	//conexion a la BD
 	include("conexion.php");
 
-    
+    $log = mysql_query("SELECT contra from usuario where nombUsuario='$var_usuario' and correo='$var_correo'"); 
 
 	
 	mysql_query($query);
