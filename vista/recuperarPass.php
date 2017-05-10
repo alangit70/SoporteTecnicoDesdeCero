@@ -77,7 +77,7 @@
         <div class="form-group centered-form">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-2">
                 <h3>Recuperar contraseña</h3>
-                <form id="fo3" name="fo3" action="../operacion/registrarUsuario.php" method="post">
+                <form id="fo3" name="fo3" action="../operacion/recuperarPass.php" method="post">
                     <div class="form-group">
                         <input type="text" name="usuario" id="usuario" class="form-control input-lg" placeholder="Usuario" required autofocus maxlength="15" pattern="[a-zA-Z a-zA-Z]*" title="solo puedes introducir letras">
                     </div>
