@@ -10,18 +10,25 @@
     
 	if (mysql_num_rows($log)>0) {
 		$row = mysql_fetch_array($log);
-              $_SESSION["usuario"] = $row['nombUsuario'];
-              $_SESSION["tipoUsuario"] = $row['tipo'];
 
-		$restablecer = mysql_query("UPDATE usuario SET estado='0' WHERE nombUsuario='$usuario'");              
-        
-        if($row['tipo']=="admin"){
-            echo '<script> window.location="../vista/indexAdmin.php"; </script>';
-        }else if($row['tipo']=="user"){
-            echo '<script> window.location="../vista/indexUser.php"; </script>';
-        }
-		
-    }else{
+		if ($row['estado']=="3") {
+			echo '<script> alert("Usuario BLOQUEADO, contacta a tu administrador para desbloquear");</script>';
+			echo '<script> window.location="../vista/login.php"; </script>';
+		}
+		else {
+	              $_SESSION["usuario"] = $row['nombUsuario'];
+	              $_SESSION["tipoUsuario"] = $row['tipo'];
+
+			$restablecer = mysql_query("UPDATE usuario SET estado='0' WHERE nombUsuario='$usuario'");              
+	        
+	        if($row['tipo']=="admin"){
+	            echo '<script> window.location="../vista/indexAdmin.php"; </script>';
+	        }else if($row['tipo']=="user"){
+	            echo '<script> window.location="../vista/indexUser.php"; </script>';
+	        }
+		}
+    }
+    else{
 			
 		$log2 = mysql_query("SELECT * from usuario where nombUsuario='$usuario'");
 
