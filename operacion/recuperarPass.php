@@ -4,6 +4,7 @@
 	$var_usuario=$_POST['usuario'];
 	$var_correo=$_POST['correo'];
 
+
     include_once('class.phpmailer.php');
 	include_once('class.smtp.php'); 
 
@@ -16,6 +17,8 @@
 	   $mensaje[0]=$fila_recorre[0];
 	    
 	}
+
+	$mensaje = 'Hola '.$var_usuario.' tu password es: '.$mensaje[0].' , Te recomendamos no olvidar de nuevo tu password.';
 
 	//Este bloque es importante
 	$mail = new PHPMailer();
@@ -32,10 +35,10 @@
 	//Agregar destinatario
 	$mail->AddAddress($var_correo);
 	$mail->Subject = 'Recuperar Password';
-	$mail->Body = "Hola \"$var_usuario\" tu password es: \"$mensaje[0]\". Te recomendamos no olvidar más tu password";
-	//Para adjuntar archivo
-	$mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
-	$mail->MsgHTML($mensaje[0]);
+
+	$mail->Body = $mensaje;
+
+	$mail->MsgHTML($mensaje);
 	 
 	//Avisar si fue enviado o no y dirigir al index
 	if($mail->Send())
