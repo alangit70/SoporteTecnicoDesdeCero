@@ -32,7 +32,7 @@
 	//Agregar destinatario
 	$mail->AddAddress($var_correo);
 	$mail->Subject = 'Recuperar Password';
-	$mail->Body = $mensaje[0];
+	$mail->Body = "Hola \"$var_usuario\" tu password es: \"$mensaje[0]\". Te recomendamos no olvidar más tu password";
 	//Para adjuntar archivo
 	$mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
 	$mail->MsgHTML($mensaje[0]);
